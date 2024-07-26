@@ -1,0 +1,83 @@
+{% extends 'translator/base.html' %}
+
+{% block title %}Voice Command - Voice Translator{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h1 class="text-center mb-4">Voice Command</h1>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Text Input</h5>
+                <div class="form-group">
+                    <textarea id="voice-input" class="form-control" placeholder="Enter text here..." rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group mt-4">
+            <label for="voice">Select Voice:</label>
+            <select id="voice" class="form-control">
+                <option value="US English Female">US English Female</option>
+                <option value="US English Male">US English Male</option>
+                <option value="Spanish Female">Spanish Female</option>
+                <option value="Spanish Male">Spanish Male</option>
+                <option value="Hindi Female">Hindi Female</option>
+                <option value="Hindi Male">Hindi Male</option>
+                <option value="French Female">French Female</option>
+                <option value="French Male">French Male</option>
+                <option value="Deutsch Female">Deutsch Female</option>
+                <option value="Deutsch Male">Deutsch Male</option>
+                <option value="Chinese Female">Chinese Female</option>
+                <option value="Chinese Male">Chinese Male</option>
+                <option value="Japanese Female">Japanese Female</option>
+                <option value="Japanese Male">Japanese Male</option>
+                <!-- Add more voices as needed -->
+            </select>
+        </div>
+
+        <button class="btn btn-primary btn-block mt-3" onclick="convertTextToSpeech()">Convert to Speech</button>
+
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Converted Speech</h5>
+                <div id="converted-speech" class="card-text"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-center mt-4">
+    <a href="{% url 'home' %}" class="btn btn-lg btn-outline-primary">Get Started</a>
+</div>
+<br> </br>
+<script>
+    function convertTextToSpeech() {
+        const voiceInput = document.getElementById('voice-input').value;
+        const voice = document.getElementById('voice').value;
+        
+        // AJAX request to Django view for text-to-speech conversion
+        $.ajax({
+            url: '{% url 'convert_text_to_speech' %}',
+            method: 'POST',
+            data: {
+                text: voiceInput,
+                voice: voice
+            },
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            success: function(response) {
+                if (response.success) {
+                    document.getElementById('converted-speech').innerHTML = `<audio controls><source src="${response.audio_url}" type="audio/mpeg">Your browser does not support the audio element.</audio>`;
+                } else {
+                    document.getElementById('converted-speech').innerText = `Error: ${response.error}`;
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+                document.getElementById('converted-speech').innerText = 'Error: Something went wrong.';
+            }
+        });
+    }
+</script>
+{% endblock %}

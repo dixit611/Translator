@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Voice Translator{% endblock %}</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a style="color:red;" class="navbar-brand" href="{% url 'home' %}">
+            <span style="font-size: 1.2em;">ॐ</span>
+            <span style="font-size: 0.6em; margin-bottom: -5px;">=</span>
+            <span style="font-size: 1.2em; margin-top: -10px;">mc²</span>
+          </a>
+        
+          <a class="navbar-brand" href="{% url 'home' %}">Language Translator</a>  
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'voice_command' %}">Voice</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">About</a>
+                    </li>
+                    <!-- Add more navigation links as needed -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Content -->
+<div class="container mt-5">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="text-muted">Follow us on:</span>
+                <a href="www.linkedin.com/in/aman-dixit-surhan" class="social-icon"><i class="fab fa-linkedin fa-lg mx-2" style="color: #0A66C2;"></i></a>
+                <a href="https://github.com/dixit611" class="social-icon"><i class="fab fa-github fa-lg mx-2" style="color: #fff;"></i></a>
+                <a href="https://t.me/creativedixitaman" class="social-icon"><i class="fab fa-telegram fa-lg mx-2" style="color: #3390EC;"></i></a>
+                <a href="https://wa.me/916386676301" class="social-icon"><i class="fab fa-whatsapp fa-lg mx-2" style="color: rgba(62, 223, 91);"></i></a>
+                <a href="https://youtube.com/@amandixitsurhan1136?feature=shared" class="social-icon"><i class="fab fa-youtube fa-lg mx-2" style="color: #FF0808;"></i></a>
+                <a href="https://twitter.com/AmanDix19782310" class="social-icon"><i class="fab fa-twitter fa-lg mx-2"></i></a>
+            </div>
+        </div>
+    </div>
+    <p>&copy; 2024 @amandixit611 Company. All rights reserved.</p>
+</footer>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
