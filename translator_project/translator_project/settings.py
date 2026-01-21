@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-3ph#i+yz$ht9b08x$j19nmh#@wi@p5#c3k7ve2pxuei41v$^7g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
 
 
 
@@ -87,30 +87,12 @@ WSGI_APPLICATION = 'translator_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',  # Use 'mysql.connector.django' if using mysql-connector-python
-        'NAME': 'aman',
-        'USER': 'Aman_Dixit',
-        'PASSWORD': 'Dixitaman611',
-        'HOST': '127.0.0.1',  # Set to 'localhost' if running locally
-        'PORT': '3306',  # Default is '3306'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
-
-
-STATICFILES_DIRS = [
-    r'C:\Users\dixit\OneDrive\Desktop\Django\translator_project\static',
-    # Add more directories if needed
-]
 
 
 
